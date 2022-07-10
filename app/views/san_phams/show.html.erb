@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @san_pham %>
+
+<div>
+  <%= link_to "Edit this san pham", edit_san_pham_path(@san_pham) %> |
+  <%= link_to "Back to san phams", san_phams_path %>
+
+  <%= button_to "Destroy this san pham", @san_pham, method: :delete %>
+</div>

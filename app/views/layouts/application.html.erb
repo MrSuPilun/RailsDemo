@@ -13,6 +13,38 @@
   </head>
   
   <body>
-    <%= yield %>   
+    <header>      
+      <div class="container-fluid row bg-primary">
+        <div class="container">
+          <nav class="navbar navbar-dark">  
+            <a href="#" style="color:white; font-size:30px; font-weight:bold;">SHOPGAME</a>
+            <form class="form-inline">
+              <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">   
+              <i class="fa-solid fa-magnifying-glass" style="color:white; font-size:20px;"></i>             
+            </form>
+            <div class="container-inline">    
+              <a href="#" style="color:white;">                
+                <% if current_user %>
+                  <%= current_user.email %>
+                  <%= link_to "Đăng xuất", destroy_user_session_path, 'data-turbo-method': :delete, 'style': 'color: white' %>
+                <% else %>  
+                  <%= link_to "Đăng nhập", new_user_session_path, 'style': 'color: white' %>       
+                <% end %>                
+              </a>            
+            </div>
+          </nav>
+        </div>
+      </div>
+    </header>
+    <main>      
+      <div class="container">        
+        <% if notice %>
+          <p class="notice"><%= notice %></p>
+        <% elsif alert %>
+          <p class="alert"><%= alert %></p>
+        <% end %>        
+        <%= yield %>   
+      </div>
+    </main>
   </body>
 </html>
